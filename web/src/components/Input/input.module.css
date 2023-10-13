@@ -47,7 +47,7 @@
   }
   /* ------- selector iput styles */
   .selectInput{
-    height: 42px;
+    height: 35px;
     max-width: 400px;
     min-width: 100px;
     width: 100%;
@@ -59,8 +59,8 @@
     /* font  */
     font-style: normal;
     font-weight: 400;
-    font-size: 0.9rem;
-    line-height: 28px;
+    font-size: 0.7rem;
+    line-height: 25px;
     color: #6b7177;
   }
   .selectWrapper {

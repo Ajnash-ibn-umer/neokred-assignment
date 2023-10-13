@@ -24,7 +24,7 @@ const Input = ({
   label,
   name,
   ...props
-}: InputTextInterFace) => {
+}: any) => {
   // checkbox
   if (type === "checkbox") {
     return (
@@ -61,56 +61,7 @@ const Input = ({
         </div>
       </>
     );
-  }
-  //textArea
-  else if (type === "textArea") {
-    return (
-      <>
-        <textarea
-          cols={30}
-          rows={10}
-          {...props}
-          onChange={onChange}
-          value={value}
-          name={name}
-          className={style.textArea}
-        ></textarea>
-      </>
-    );
-  } else if (type === "radio") {
-    return (
-      <>
-        <input
-          {...props}
-          onChange={onChange}
-          value={value}
-          type={"radio"}
-          name={name}
-          placeholder={placeholder}
-          className={style.radioInput}
-        />
-      </>
-    );
-  } else if (type === "search") {
-    return (
-      <>
-        <div className={style.searchBox}>
-          <input
-            {...props}
-            onChange={onChange}
-            value={value}
-            type={"text"}
-            name={name}
-            placeholder={placeholder}
-            className={style.searchInput}
-          />
-          <div className={style.placeHolderIcon}>
-            <BsSearch />
-          </div>
-        </div>
-      </>
-    );
-  } else {
+  }else {
     // other input field
     return (
       <>

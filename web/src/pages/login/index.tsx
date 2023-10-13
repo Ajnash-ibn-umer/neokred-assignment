@@ -150,7 +150,7 @@ export default function Login() {
                     </div>
                   ) : null}
                 </div>
-                <div className={style.formGroup}>
+                <div className={style.inputWrapper}>
                   <span>Forgot Password?</span>
                 </div>
                 <div className={style.formGroup}>

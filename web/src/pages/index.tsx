@@ -4,8 +4,8 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import logo from "../../public/logo.svg"
-import avatar from "../../public/Avatar.svg"
+import logo from "../../public/logo.svg";
+import avatar from "../../public/Avatar.svg";
 
 import fetch from "@/hooks/Fetch";
 import { PROFILE } from "@/apis/apis";
@@ -14,20 +14,22 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter();
-  const [data,setData]=useState<any>()
+  const [data, setData] = useState<any>();
   useEffect(() => {
     if (!localStorage.getItem("token")) router.push("/login");
-fetchData()
-
+    fetchData();
   }, []);
 
-  const fetchData=async()=>{
-const response=await fetch({method:"get",url:PROFILE})
-console.log({response});
-setData(response.data?.data.user)
-if(response.auth===false)router.push("/login")
-  }
-
+  const fetchData = async () => {
+    const response = await fetch({ method: "get", url: PROFILE });
+    console.log({ response });
+    setData(response.data?.data.user);
+    if (response.auth === false) router.push("/login");
+  };
+const logout=()=>{
+  localStorage.clear()
+  router.push("/login");
+}
   return (
     <>
       <Head>
@@ -43,19 +45,18 @@ if(response.auth===false)router.push("/login")
           </div>
           <div className={styles.userInfo}>
             <p>{data?.fullName ?? ""}</p>
-            <span>Admin</span>
+            <span onClick={logout}>Logout</span>
           </div>
         </div>
         <div className={styles.mainContainer}>
-        <div className={styles.avatar} >
-                <Image alt="avatar" src={avatar} />
-              </div>
+          <div className={styles.avatar}>
+            <Image alt="avatar" src={avatar} />
+          </div>
           <div className={styles.profileInfoContainer}>
             <div className={styles.infoTitle}>
               <p>Profile</p>
             </div>
             <div className={styles.userInformation}>
-              
               <div className={styles.singleInfoWrapper}>
                 <p>Name</p>
                 <p>{data?.fullName ?? ""}</p>
@@ -66,7 +67,7 @@ if(response.auth===false)router.push("/login")
               </div>
               <div className={styles.singleInfoWrapper}>
                 <p>DOB</p>
-                <p>{moment(data?.dateOfBirth).format('DD/MM/YYYY') ?? ""}</p>
+                <p>{moment(data?.dateOfBirth).format("DD/MM/YYYY") ?? ""}</p>
               </div>
               <div className={styles.singleInfoWrapper}>
                 <p>Phone number</p>
@@ -94,7 +95,11 @@ if(response.auth===false)router.push("/login")
               </div>
               <div className={styles.singleInfoWrapper}>
                 <p>Security</p>
-                <p>{data?.securityQuestion ?? "" }<br/>{data?.securityAnswer ?? "" }</p>
+                <p>
+                  {data?.securityQuestion ?? ""}
+                  <br />
+                  {data?.securityAnswer ?? ""}
+                </p>
               </div>
             </div>
           </div>

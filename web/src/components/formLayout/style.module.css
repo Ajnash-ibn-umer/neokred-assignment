@@ -24,12 +24,14 @@ border-radius: 20px;
 background: linear-gradient(143deg, #FFEDE5 0.97%, #DBE3FF 98.61%);
 background-image: url("../../../public/banner.jpg");
 background-color: #cccccc;
+background-repeat: no-repeat;
+
 }
 
 .rightSec{
     display: flex;
-    width: 50%;
+    width: 55%;
     flex-direction: row;
 
-  padding-left: 5%;
+  padding-left: 3%;
 }
